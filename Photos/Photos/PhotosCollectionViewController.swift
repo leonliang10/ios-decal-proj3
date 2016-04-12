@@ -76,13 +76,13 @@ class PhotosCollectionViewController: UICollectionViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "photoDetails") {
+        if (segue.identifier == "ShowSinglePhoto") {
             let singlePhotosViewController = segue.destinationViewController as! SinglePhotosViewController
             if let cell = sender as? UICollectionViewCell, indexPath = collectionView!.indexPathForCell(cell) {
                 // use indexPath
                 
                 singlePhotosViewController.photoDetails = UIImage(data: NSData(contentsOfURL: NSURL(string: photos[indexPath.row].url)!)!)!
-                singlePhotosViewController.numberOfLikes = "\(photos[indexPath.row].likes)"
+                singlePhotosViewController.numberOfLikes = photos[indexPath.row].likes
                 singlePhotosViewController.username = photos[indexPath.row].username
                 singlePhotosViewController.postDate = photos[indexPath.row].postDate
             }

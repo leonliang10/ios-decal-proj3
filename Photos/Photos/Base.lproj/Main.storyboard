@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Photos Collection View Controller-->
+        <!--Popular Photos on Instagram-->
         <scene sceneID="oBy-Uz-k3x">
             <objects>
                 <collectionViewController id="xgu-Yf-6Bp" customClass="PhotosCollectionViewController" customModule="Photos" customModuleProvider="target" sceneMemberID="viewController">
@@ -13,28 +13,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QTl-vw-Q8E">
-                            <size key="itemSize" width="249" height="212"/>
+                            <size key="itemSize" width="120" height="102"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="4e2-FG-dLp" customClass="PhotosCollectionViewCell" customModule="Photos" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="249" height="212"/>
+                                <rect key="frame" x="0.0" y="64" width="120" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="249" height="212"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t5h-JZ-ovN">
-                                            <rect key="frame" x="1" y="0.0" width="248" height="212"/>
+                                            <rect key="frame" x="1" y="0.0" width="119" height="102"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
                                     <outlet property="imageViewCell" destination="t5h-JZ-ovN" id="0zW-aa-JjF"/>
-                                    <segue destination="6PR-1m-dqw" kind="show" id="B47-kI-p1e"/>
+                                    <segue destination="6PR-1m-dqw" kind="show" identifier="ShowSinglePhoto" id="B47-kI-p1e"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -43,7 +43,7 @@
                             <outlet property="delegate" destination="xgu-Yf-6Bp" id="eZB-9G-aNT"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="CWa-8c-zMs"/>
+                    <navigationItem key="navigationItem" title="Popular Photos on Instagram" id="CWa-8c-zMs"/>
                     <connections>
                         <outlet property="collectionView" destination="MFo-bf-CtF" id="gtU-0c-bgT"/>
                         <outlet property="myCollectionView" destination="MFo-bf-CtF" id="4ui-Sc-dLD"/>
@@ -66,13 +66,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Heo-Gk-Vwx">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <rect key="frame" x="59" y="100" width="229" height="224"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frb-di-l7E">
+                                <rect key="frame" x="59" y="356" width="118" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRn-tg-EY2">
+                                <rect key="frame" x="217" y="356" width="126" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="empty_heart" translatesAutoresizingMaskIntoConstraints="NO" id="m2A-bb-A4X">
+                                <rect key="frame" x="59" y="403" width="30" height="27"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qa1-3H-AQl">
+                                <rect key="frame" x="129" y="403" width="125" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="dateLabel" destination="dRn-tg-EY2" id="ybH-Xe-4ah"/>
+                        <outlet property="heartIcon" destination="m2A-bb-A4X" id="AVT-JG-bvw"/>
+                        <outlet property="numberOfLikesLabel" destination="qa1-3H-AQl" id="X6O-je-Fv4"/>
                         <outlet property="photoView" destination="Heo-Gk-Vwx" id="sbI-gr-Avq"/>
+                        <outlet property="usernameLabel" destination="Frb-di-l7E" id="mvL-c5-taK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WXT-00-5VK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -98,4 +123,8 @@
             <point key="canvasLocation" x="1232" y="452"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="empty_heart" width="512" height="512"/>
+    </resources>
+    <color key="tintColor" red="0.0" green="0.14433013759999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
