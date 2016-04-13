@@ -33,7 +33,6 @@ class PhotosCollectionViewController: UICollectionViewController {
 
     func refreshStream() {
         
-//        print("refresh")
         let api = InstagramAPI()
         api.loadPhotos(didLoadPhotos)
         self.myCollectionView.reloadData()
@@ -96,8 +95,6 @@ class PhotosCollectionViewController: UICollectionViewController {
         if (segue.identifier == "ShowSinglePhoto") {
             let singlePhotosViewController = segue.destinationViewController as! SinglePhotosViewController
             if let cell = sender as? UICollectionViewCell, indexPath = collectionView!.indexPathForCell(cell) {
-                // use indexPath
-                
                 singlePhotosViewController.photoDetails = UIImage(data: NSData(contentsOfURL: NSURL(string: photos[indexPath.row].url)!)!)!
 //                singlePhotosViewController.photos = photos
                 singlePhotosViewController.numberOfLikes = photos[indexPath.row].likes
