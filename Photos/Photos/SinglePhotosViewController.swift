@@ -17,6 +17,7 @@ class SinglePhotosViewController: UIViewController {
     @IBOutlet weak var heartIcon: UIImageView!
     
     
+//    var photos = [Photo]()
     var photoDetails: UIImage = UIImage()
     var numberOfLikes: Int = 0
     var didLikePhoto: Bool = false
@@ -27,11 +28,11 @@ class SinglePhotosViewController: UIViewController {
         super.viewDidLoad()
         photoView.image = photoDetails
         numberOfLikesLabel.text = "\(numberOfLikes)" + " Likes"
-        usernameLabel.text = username
+        usernameLabel.text = username + "'s Photo"
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyy"
-        dateLabel.text = dateFormatter.stringFromDate(postDate)
+        dateLabel.text = "Post Date: " + dateFormatter.stringFromDate(postDate)
         
         heartIcon.userInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SinglePhotosViewController.tappedHeartIcon(_:)))

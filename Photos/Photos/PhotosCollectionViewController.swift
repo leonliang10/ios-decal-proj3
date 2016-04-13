@@ -19,6 +19,7 @@ class PhotosCollectionViewController: UICollectionViewController {
         let api = InstagramAPI()
         api.loadPhotos(didLoadPhotos)
         // FILL ME IN
+        myCollectionView.backgroundColor = UIColor(white: 1, alpha: 1)
         
     }
 
@@ -60,13 +61,11 @@ class PhotosCollectionViewController: UICollectionViewController {
         return photoCell
     }
     
-    override func numberOfSectionsInCollectionView(collectionView:
-        UICollectionView) -> Int {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override func collectionView(collectionView: UICollectionView,
-                                 numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if photos == nil{
             return 0
         } else{
@@ -82,6 +81,7 @@ class PhotosCollectionViewController: UICollectionViewController {
                 // use indexPath
                 
                 singlePhotosViewController.photoDetails = UIImage(data: NSData(contentsOfURL: NSURL(string: photos[indexPath.row].url)!)!)!
+//                singlePhotosViewController.photos = photos
                 singlePhotosViewController.numberOfLikes = photos[indexPath.row].likes
                 singlePhotosViewController.username = photos[indexPath.row].username
                 singlePhotosViewController.postDate = photos[indexPath.row].postDate
