@@ -13,6 +13,8 @@ class PhotosCollectionViewController: UICollectionViewController {
     var photos: [Photo]!
     @IBOutlet var myCollectionView: UICollectionView!
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,8 +23,24 @@ class PhotosCollectionViewController: UICollectionViewController {
         // FILL ME IN
         myCollectionView.backgroundColor = UIColor(white: 1, alpha: 1)
         
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(PhotosCollectionViewController.refreshStream), forControlEvents: .ValueChanged)
+        
+        refreshControl = refresher
+        myCollectionView.addSubview(refreshControl!)
+        
     }
 
+    func refreshStream() {
+        
+//        print("refresh")
+        let api = InstagramAPI()
+        api.loadPhotos(didLoadPhotos)
+        self.myCollectionView.reloadData()
+        
+        refreshControl?.endRefreshing()
+        
+    }
     /* 
      * IMPLEMENT ANY COLLECTION VIEW DELEGATE METHODS YOU FIND NECESSARY
      * Examples include cellForItemAtIndexPath, numberOfSections, etc.
